@@ -78,8 +78,6 @@ public class MainActivity extends AppCompatActivity {
             calificacionesConNombre.add(nombre + " | " + promedio.toString());
         }
 
-
-
         adapter = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, calificacionesConNombre);
         lv1.setAdapter(adapter);
 

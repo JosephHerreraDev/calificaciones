@@ -1,7 +1,9 @@
 package com.example.calificaciones;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -18,6 +20,7 @@ public class Agregar extends AppCompatActivity {
     EditText etCal1;
     EditText etCal2;
     EditText etCal3;
+    Button btnOrganizar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +37,18 @@ public class Agregar extends AppCompatActivity {
         etCal1 = findViewById(R.id.etCal1);
         etCal2 = findViewById(R.id.etCal2);
         etCal3 = findViewById(R.id.etCal3);
+        btnOrganizar = findViewById(R.id.btnOrganizar);
 
         //myDb.deleteData("1");
+
+        Intent intent = new Intent(Agregar.this, ordenado.class);
+
+        btnOrganizar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                startActivity(intent);
+            }
+        });
     }
 
     public void agregar(View view){
