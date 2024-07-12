@@ -121,8 +121,13 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db2 = this.getWritableDatabase();
         return db2.delete(tableName,"ID = ?",new String[]{id});
     }
-    public Cursor getData(String id){
+    public Cursor getDataById(String id){
         SQLiteDatabase db2 = this.getWritableDatabase();
         return db2.rawQuery("SELECT * FROM " + tableName + " WHERE ID = ?", new String[]{id});
+    }
+
+    public Cursor getData(){
+        SQLiteDatabase db2 = this.getWritableDatabase();
+        return db2.rawQuery("SELECT * FROM " + tableName,null);
     }
 }
