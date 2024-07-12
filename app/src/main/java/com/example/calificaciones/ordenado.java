@@ -41,9 +41,6 @@ public class ordenado extends AppCompatActivity {
         lvReprobado = findViewById(R.id.lvReprobado);
 
         String nombre = "";
-        Float cal1 = 0f;
-        Float cal2= 0f;
-        Float cal3= 0f;
 
         Cursor res = myDb.getData();
 
@@ -54,11 +51,8 @@ public class ordenado extends AppCompatActivity {
 
         while(res.moveToNext()){
             nombre = res.getString(1);
-            cal1 = res.getFloat(2);
-            cal2 = res.getFloat(3);
-            cal3 = res.getFloat(4);
 
-            promedio = (cal1 + cal2 + cal3)/3;
+            promedio = res.getFloat(5);
             if(promedio >= 7){
                 aprobados.add(nombre);
             }

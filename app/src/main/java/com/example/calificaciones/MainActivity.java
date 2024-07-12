@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
     Database myDb;
     Button btn;
-    Float promedio;
     ArrayAdapter adapter;
     List<String> calificacionesConNombre = new ArrayList<String>();
     ListView lv1;
@@ -40,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         myDb = new Database(this);
+        //myDb.dropDatabase(this);
         btn = findViewById(R.id.btn);
         lv1 = findViewById(R.id.lv1);
 
@@ -51,15 +51,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         consultar();
     }
 
     public void consultar (){
         String nombre = "";
-        Float cal1 = 0f;
-        Float cal2= 0f;
-        Float cal3= 0f;
+        Float promedio = 0f;
 
         Cursor res = myDb.getData();
 
@@ -70,17 +67,12 @@ public class MainActivity extends AppCompatActivity {
 
         while(res.moveToNext()){
             nombre = res.getString(1);
-            cal1 = res.getFloat(2);
-            cal2 = res.getFloat(3);
-            cal3 = res.getFloat(4);
+            promedio = res.getFloat(5);
 
-            promedio = (cal1 + cal2 + cal3)/3;
             calificacionesConNombre.add(nombre + " | " + promedio.toString());
         }
 
         adapter = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, calificacionesConNombre);
         lv1.setAdapter(adapter);
-
-        //res.getString(1);
     }
 }

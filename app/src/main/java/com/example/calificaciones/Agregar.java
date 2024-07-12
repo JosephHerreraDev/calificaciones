@@ -39,7 +39,8 @@ public class Agregar extends AppCompatActivity {
         etCal3 = findViewById(R.id.etCal3);
         btnOrganizar = findViewById(R.id.btnOrganizar);
 
-        //myDb.deleteData("1");
+        //myDb.deleteData("0");
+
 
         Intent intent = new Intent(Agregar.this, ordenado.class);
 
@@ -52,10 +53,17 @@ public class Agregar extends AppCompatActivity {
     }
 
     public void agregar(View view){
-        boolean seInserto = myDb.insertData(etNombre.getText().toString(), Double.parseDouble(etCal1.getText().toString()),
-                Double.parseDouble(etCal2.getText().toString()),Double.parseDouble(etCal3.getText().toString()));
+
+        String nombre = etNombre.getText().toString();
+        Double calificacion1 = Double.parseDouble(etCal1.getText().toString());
+        Double calificacion2 = Double.parseDouble(etCal2.getText().toString());
+        Double calificacion3 = Double.parseDouble(etCal3.getText().toString());
+
+        Double promedio = (calificacion1 + calificacion2 + calificacion3) / 3;
+
+        boolean seInserto = myDb.insertData(nombre,calificacion1,calificacion2,calificacion3,promedio);
         if(seInserto){
-            Toast.makeText(this, "Se inserto", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Se inserto, promedio: " + promedio.toString(), Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(this, "No se inserto", Toast.LENGTH_SHORT).show();
         }
