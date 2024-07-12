@@ -36,7 +36,6 @@ public class Agregar extends AppCompatActivity {
         etCal3 = findViewById(R.id.etCal3);
 
         //myDb.deleteData("1");
-
     }
 
     public void agregar(View view){
